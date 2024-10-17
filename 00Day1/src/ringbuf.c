@@ -3,45 +3,72 @@
 #include "ringbuf.h"
 #include <stdint.h>
 
-
-RINGBUF ring_buff;
-
+RingBuffer_t r;
 
 void ringbuffer_init(int size)
 {
-    printf("Init ring buffer \n");
-    ring_buff.size = size;
-    ring_buff.buf  = (uint8_t*)malloc(size * sizeof(uint8_t));
-
-    if (ring_buff.buf != NULL)
-    {
-        printf("malloc sucessesfully \n");
+    if(size > MAX_SIZE){
+        size = MAX_SIZE;
     }
-    ring_buff.head = 0;
-    ring_buff.tail = 0;
-    
+    r.max_size = size;
+    r.head = 0;
+    r.tail = 0;
+    r.size = 0;
+
 }
 
 int ringbuffer_add(int value)
 {
+    if(r.size == r.max_size){
+        return -1;
+    }
+    r.buffer[r.tail] = value;
+    r.tail = (r.tail +1) % r.max_size; // nếu quá max sẽ quay lại 0;
+    r.size++;
+    return 0;
+}
+
+int ringbuffer_remove(int *value)
+{
+    if(r.size == 0){
+        return -1;
+    }
+    *value = r.buffer[r.head];
+    r.head = (r.head + 1) % (r.max_size); //nếu vượt quá sẽ quay lại 0
+    r.size --;
+    
+    return 0;
+
+}
 
 
-
+int ringbuffer_is_full()
+{
+   return (r.size == r.max_size) ? 1 : 0;
+   // return ((r.tail + 1) % r.max_size == r.head) ? 1 : 0;
 }
 
 int ringbuffer_is_empty()
 {
-    return (ring_buff.head == ring_buff.tail) ? 1 : 0;
+    return (r.size == 0) ? 1 : 0;
+    //return (head == tail) ? 1 : 0;
 
-}
 
-int ringbuffer_is_full()
-{
-    return (ring_buff.head + 1 == ring_buff.tail) ? 1 : 0;
 }
 
 int ringbuffer_size()
 {
-    return ring_buff.tail - ring_buff.head;
+    return r.size;
+
+
 }
+
+int ringbuffer_get_head() {
+    return r.head;
+}
+
+int ringbuffer_get_tail() {
+    return r.tail;
+}
+
 

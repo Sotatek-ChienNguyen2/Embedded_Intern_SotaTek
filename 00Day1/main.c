@@ -1,19 +1,33 @@
 #include <stdio.h>
 #include "inc/ringbuf.h"
 
-int size  = 5;
-uint8_t isEmpty;
-uint8_t isFull;
+
 
 int main()
 {
-   ringbuffer_init(size);
-   isFull   =  ringbuffer_is_full();
-   isEmpty  =  ringbuffer_is_empty();
-   printf("Status code isEmpty: %d\n", isEmpty);
-   printf("Status code isFull %d\n", isFull);
+     int value;
 
+    ringbuffer_init(5);
 
+    printf("Bộ đệm rỗng: %d\n", ringbuffer_is_empty());
+
+    ringbuffer_add(10);
+    ringbuffer_add(20);
+
+   
+    ringbuffer_remove(&value);
+    printf("Giá trị đã loại bỏ: %d\n", value); 
+
+    ringbuffer_add(30);
+    ringbuffer_add(40);
+    ringbuffer_add(50);
+
+    printf("Bộ đệm đầy: %d\n", ringbuffer_is_full());
+
+    ringbuffer_remove(&value);
+    printf("Giá trị đã loại bỏ: %d\n", value); 
+
+    printf("Số lượng phần tử hiện tại: %d\n", ringbuffer_size());
 
 
     return 0;
