@@ -13,16 +13,17 @@ LIB_SHARED := $(LIB_DIR)/shared
 
 INC_FLAGS := -I $(INC_DIR) 
 CC := gcc
+PTHREAD_FLAG := -pthread  # Thêm cờ pthread
 
 mk_objs_static_lib:
-	$(CC) -c $(CUR_DIR)/main.c -o $(OBJ_DIR)/main.o $(INC_FLAGS)
+	$(CC) -c $(CUR_DIR)/main.c -o $(OBJ_DIR)/main.o $(INC_FLAGS) $(PTHREAD_FLAG)
 	$(CC) -c $(SRC_DIR)/ringbuf.c -o $(OBJ_DIR)/ringbuf.o $(INC_FLAGS)
 
 mk_static:
 	ar rcs $(LIB_STATIC)/lib$(LIB_NAME).a $(OBJ_DIR)/ringbuf.o 
 
 all_static_lib: mk_objs_static_lib mk_static
-	$(CC)  $(OBJ_DIR)/main.o  -L$(LIB_STATIC) -l$(LIB_NAME) -o $(BIN_DIR)/use-static-library
+	$(CC)  $(OBJ_DIR)/main.o  -L$(LIB_STATIC) -l$(LIB_NAME) -o $(BIN_DIR)/use-static-library $(PTHREAD_FLAG)
 
 clean: 
 	rm -rf $(OBJ_DIR)/*
