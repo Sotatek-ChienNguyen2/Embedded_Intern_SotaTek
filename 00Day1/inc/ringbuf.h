@@ -31,6 +31,7 @@ int ringbuffer_size();
 
 int ringbuffer_get_head();
 int ringbuffer_get_tail();
+void ringbuffer_print();
 
 #ifdef __cplusplus
 }

@@ -63,6 +63,9 @@ int ringbuffer_size()
 
 }
 
+
+
+
 int ringbuffer_get_head() {
     return r.head;
 }
@@ -71,4 +74,18 @@ int ringbuffer_get_tail() {
     return r.tail;
 }
 
+
+// Hàm in trạng thái của buffer
+void ringbuffer_print() {
+    printf("Trạng thái của buffer: ");
+    for (int i = 0; i < r.max_size; i++) {
+        int index = (r.head + i) % r.max_size;  // Tính toán chỉ số
+        if (i < r.size) {
+            printf("%d ", r.buffer[index]); // In giá trị nếu có
+        } else {
+            printf("N/A "); // In N/A cho ô trống
+        }
+    }
+    printf("\n");
+}
 
