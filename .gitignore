@@ -38,3 +38,7 @@ Thumbs.db          # Tệp hệ thống trên Windows
 
 # Thư mục .git
 .git/              # Thư mục chứa dữ liệu git
+
+
+#khác
+/GTest
