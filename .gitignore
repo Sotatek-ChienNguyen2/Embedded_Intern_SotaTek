@@ -1,0 +1,41 @@
+# Nhị phân và tệp được tạo ra
+*.o                # Tệp đối tượng
+*.elf              # Tệp thực thi ELF
+*.bin              # Tệp nhị phân
+*.hex              # Tệp hex
+*.map              # Tệp bản đồ
+*.dSYM             # Thư mục tệp gỡ lỗi (macOS)
+
+# Tệp biên dịch
+/build/            # Thư mục build
+/Debug/            # Thư mục debug
+/Release/          # Thư mục release
+/*.out             # Tệp đầu ra
+
+# Thư mục nhị phân hoặc tạm thời
+*.tmp              # Tệp tạm thời
+*.tmp.*            # Tệp tạm thời với phần mở rộng
+
+# Tệp cấu hình và tệp dự án
+*.sublime-project   # Tệp dự án Sublime Text
+*.sublime-workspace  # Tệp workspace Sublime Text
+*.idea/             # Thư mục cấu hình của IntelliJ IDEA
+.vscode/            # Thư mục cấu hình của Visual Studio Code
+*.code-workspace    # Tệp workspace Visual Studio Code
+
+# Thư viện bên ngoài
+lib/               # Thư mục thư viện bên ngoài
+
+# Thư mục nhúng
+*.launch           # Tệp cấu hình Launch
+*.json             # Tệp JSON cấu hình
+
+# Thư mục tải lên
+/uploads/          # Thư mục chứa tệp tải lên
+
+# Tệp tạm thời do hệ điều hành tạo
+.DS_Store          # Tệp hệ thống trên macOS
+Thumbs.db          # Tệp hệ thống trên Windows
+
+# Thư mục .git
+.git/              # Thư mục chứa dữ liệu git
