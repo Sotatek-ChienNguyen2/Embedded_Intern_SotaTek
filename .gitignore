@@ -7,9 +7,8 @@
 *.dSYM             # Thư mục tệp gỡ lỗi (macOS)
 
 # Tệp biên dịch
-/build/            # Thư mục build
-/Debug/            # Thư mục debug
-/Release/          # Thư mục release
+/bin/            # Thư mục bin
+/objs/            # Thư mục objs
 /*.out             # Tệp đầu ra
 
 # Thư mục nhị phân hoặc tạm thời
@@ -24,7 +23,7 @@
 *.code-workspace    # Tệp workspace Visual Studio Code
 
 # Thư viện bên ngoài
-lib/               # Thư mục thư viện bên ngoài
+libs/               # Thư mục thư viện bên ngoài
 
 # Thư mục nhúng
 *.launch           # Tệp cấu hình Launch
