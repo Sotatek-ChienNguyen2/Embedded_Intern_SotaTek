@@ -20,6 +20,7 @@ int main()
     ringbuffer_add(40);
     ringbuffer_add(50);
     ringbuffer_add(60);
+    int ringbuffer_get_tail();
     ringbuffer_add(70);
 
     printf("Bộ đệm đầy: %d\n", ringbuffer_is_full());
