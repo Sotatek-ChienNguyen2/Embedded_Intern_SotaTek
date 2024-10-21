@@ -30,7 +30,7 @@ int ringbuffer_add(RingBuffer_t *r, int value) {
 
 int ringbuffer_remove(RingBuffer_t *r, int *value) {
     pthread_mutex_lock(&lock);
-    if (r->head == r->tail) {
+    if (r->head == r->tail) { // buffer rỗng
         pthread_mutex_unlock(&lock);
         return -1;
     }
