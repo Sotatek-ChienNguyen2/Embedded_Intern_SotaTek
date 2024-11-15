@@ -35,9 +35,9 @@ install:
 run:
 	./cmockatest
 
-# Mục để thu thập và tạo báo cáo coverage
+# thu thập và tạo báo cáo coverage.
 coverage: test run
-	@mkdir -p $(COVERAGE_DIR)  # Đảm bảo thư mục coverage tồn tại
+	@mkdir -p $(COVERAGE_DIR)  # đảm bảo thư mục coverage tồn tại
 	$(LCOV) --capture --directory . --output-file $(COVERAGE_DIR)/coverage.info
 	$(GENHTML) $(COVERAGE_DIR)/coverage.info --output-directory $(COVERAGE_DIR)
 
